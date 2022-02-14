@@ -1,0 +1,6 @@
+/hello
+coverage.out
+tags
+!gospace/src/github.com/betterplace/betterplace-hello
+gospace
+cscope.out
