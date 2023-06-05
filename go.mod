@@ -1,6 +1,6 @@
 module github.com/betterplace/betterplace-hello
 
-go 1.17
+go 1.20
 
 require (
 	github.com/flori/happening v0.0.0-20220121190720-603e5d5540e3

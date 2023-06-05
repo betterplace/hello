@@ -49,15 +49,8 @@ build-force:
 	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) --no-cache .
 	$(MAKE) build-info
 
-debug:
-	docker run --rm -it $(DOCKER_IMAGE) bash
-
 server: build
 	docker run -it -e PORT=$(DOCKER_PORT) -p $(DOCKER_PORT):$(DOCKER_PORT) $(DOCKER_IMAGE)
-
-pull:
-	docker pull $(REMOTE_TAG)
-	docker tag $(REMOTE_TAG) $(DOCKER_IMAGE)
 
 push: build
 	docker tag $(DOCKER_IMAGE) $(REMOTE_TAG)
