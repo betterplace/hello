@@ -42,7 +42,7 @@ build-info:
 	@echo $(REMOTE_TAG)
 
 build:
-	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) .
+	docker build -t $(DOCKER_IMAGE_LATEST) .
 	$(MAKE) build-info
 
 build-force:
