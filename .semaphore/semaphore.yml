@@ -10,7 +10,9 @@ blocks:
       jobs:
         - name: 'Checkout code'
           commands:
-            - checkout
+            - git clone --depth=1 --branch $SEMAPHORE_GIT_WORKING_BRANCH $SEMAPHORE_GIT_URL
+            - cd betterplace
+            - cache store checkout-cache-$SEMAPHORE_GIT_SHA .
 
   - name: 🐳 Building betterplace Docker Image
     task:
