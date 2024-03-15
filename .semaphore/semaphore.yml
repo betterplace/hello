@@ -13,8 +13,6 @@ blocks:
             - checkout
 
   - name: 🐳 Building betterplace Docker Image
-    dependencies:
-      - Checkout
     task:
       secrets:
         - name: GCP
