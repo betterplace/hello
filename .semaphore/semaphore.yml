@@ -5,9 +5,28 @@ agent:
     type: e1-standard-2
     os_image: ubuntu2004
 blocks:
-  - name: 'Block #1'
+  - name: Checkout
     task:
       jobs:
-        - name: 'Job #1'
+        - name: 'Checkout code'
           commands:
             - checkout
+
+  - name: 🐳 Building betterplace Docker Image
+    dependencies:
+      - Checkout
+    task:
+      secrets:
+        - name: GCP
+
+      prologue:
+        commands:
+          - export PATH=bin:$PATH
+          - gcloud auth activate-service-account --key-file=.secrets/gcp.json
+          - gcloud auth configure-docker -q
+          - cache restore checkout-cache-$SEMAPHORE_GIT_SHA
+
+      jobs:
+        - name: Building and pushing
+          commands:
+            - make build push REVISION=${SEMAPHORE_GIT_SHA}
