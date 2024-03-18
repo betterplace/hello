@@ -40,7 +40,7 @@ tags: clean
 
 build-info:
 	@echo $(REMOTE_TAG)
-	@docker inspect image $(DOCKER_IMAGE) | grep -i 'created'
+	@docker inspect $(DOCKER_IMAGE) | grep -i 'created'
 
 build:
 	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) .
