@@ -43,7 +43,7 @@ build-info:
 	@docker inspect $(DOCKER_IMAGE) | grep -i 'created'
 
 build:
-	docker build --cache-from $(REMOTE_TAG) -t $(DOCKER_IMAGE_LATEST) .
+	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) .
 	$(MAKE) build-info
 
 build-force:
