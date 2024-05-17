@@ -8,6 +8,8 @@ RUN apk add --no-cache bash git go build-base
 ENV USER=appuser
 ENV UID=10001
 
+ENV VERSION="test"
+
 RUN adduser \
     --disabled-password \
     --gecos "" \
@@ -23,7 +25,7 @@ ADD . .
 
 RUN make clobber setup
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags='-w -s' -o hello cmd/hello/main.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags='-X main.Revision=test -w -s' -o hello cmd/hello/main.go
 
 FROM scratch AS runner
 

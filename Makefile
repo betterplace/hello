@@ -43,11 +43,11 @@ build-info:
 	@docker inspect $(DOCKER_IMAGE) | grep -i 'created'
 
 build:
-	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) .
+	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST)  --build-arg REVISION=$(REVISION_SHORT) .
 	$(MAKE) build-info
 
 build-force:
-	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) --no-cache .
+	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) --no-cache  --build-arg REVISION=$(REVISION_SHORT) .
 	$(MAKE) build-info
 
 server: build

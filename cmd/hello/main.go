@@ -12,6 +12,7 @@ import (
 
 func main() {
 	var config hello.Config
+	var Revision string
 	err := envconfig.Process("", &config)
 	if err != nil {
 		log.Fatal(err)
@@ -21,7 +22,7 @@ func main() {
 	e.Use(middleware.Logger())
 
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, Betterplace!\n")
+		return c.String(http.StatusOK, "Hello, Betterplace! Revision: " + Revision)
 	})
 
 	e.Logger.Fatal(e.Start(":" + config.PORT))
