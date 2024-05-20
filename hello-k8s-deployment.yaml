@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: betterplace
   name: hello-deployment # Replace with a descriptive name
 spec:
   replicas: 1 # Number of pods to run
@@ -14,4 +15,4 @@ spec:
     spec:
       containers:
         - name: hello
-          image: eu.gcr.io/staging-env-182516/hello:c8d3880
+          image: eu.gcr.io/betterplace-183212/hello:b90f60d
