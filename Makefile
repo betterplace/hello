@@ -53,6 +53,7 @@ server: build
 	docker run -it -e PORT=$(DOCKER_PORT) -p $(DOCKER_PORT):$(DOCKER_PORT) $(DOCKER_IMAGE)
 
 push: build
+	gcloud auth configure-docker
 	docker tag $(DOCKER_IMAGE) $(REMOTE_TAG)
 	docker push $(REMOTE_TAG)
 
