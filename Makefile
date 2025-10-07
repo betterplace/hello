@@ -61,5 +61,5 @@ push-latest: push
 	docker tag ${DOCKER_IMAGE} ${REMOTE_LATEST_TAG}
 	docker push ${REMOTE_LATEST_TAG}
 
-grype: build
-	@docker run --pull always --rm --volume /var/run/docker.sock:/var/run/docker.sock --name Grype anchore/grype:latest --add-cpes-if-none --by-cve  --fail-on low "$(DOCKER_IMAGE)"
+grype:
+	@docker run --pull always --rm --volume /var/run/docker.sock:/var/run/docker.sock --name Grype anchore/grype:latest --add-cpes-if-none --by-cve  --fail-on low "$(REMOTE_LATEST_TAG)"
