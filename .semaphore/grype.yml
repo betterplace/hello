@@ -10,10 +10,12 @@ blocks:
     task:
 
       secrets:
-        - name: GCP
+        - name: semaphoreci-grype-pull-access
 
       prologue:
         commands:
+          - gcloud auth activate-service-account --key-file=semaphoreci-grype-pull-access.json
+          - gcloud auth configure-docker -q
           - checkout
           - sudo -H DEBIAN_FRONTEND=noninteractive sh -c 'apt install -y mailutils'
 
