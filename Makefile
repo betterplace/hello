@@ -22,12 +22,7 @@ local: hello
 fetch:
 	go mod download
 
-setup: fake-package fetch
-
-fake-package:
-	rm -rf $(GOPATH)/src/github.com/betterplace/betterplace-hello
-	mkdir -p $(GOPATH)/src/github.com/betterplace
-	ln -s $(shell pwd) $(GOPATH)/src/github.com/betterplace/betterplace-hello
+setup: fetch
 
 clean:
 	@rm -f hello tags
@@ -43,10 +38,6 @@ build-info:
 
 build:
 	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) .
-	$(MAKE) build-info
-
-build-force:
-	docker build --pull -t $(DOCKER_IMAGE) -t $(DOCKER_IMAGE_LATEST) --no-cache .
 	$(MAKE) build-info
 
 server: build
