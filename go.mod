@@ -1,6 +1,6 @@
 module github.com/betterplace/betterplace-hello
 
-go 1.25
+go 1.26.2
 
 require (
 	github.com/kelseyhightower/envconfig v1.4.0 // indirect
