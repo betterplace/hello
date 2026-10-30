@@ -3,8 +3,11 @@ module github.com/betterplace/betterplace-hello
 go 1.26.0
 
 require (
-	github.com/kelseyhightower/envconfig v1.4.0 // indirect
-	github.com/labstack/echo/v4 v4.16.1 // indirect
+	github.com/kelseyhightower/envconfig v1.4.0
+	github.com/labstack/echo/v4 v4.16.3
+)
+
+require (
 	github.com/labstack/gommon v0.5.0 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect
